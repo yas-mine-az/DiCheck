@@ -3,5 +3,5 @@ DiCheck (meDical Check) merupakan suatu platform yang digunakan untuk mengembang
 
 ### 👩🏻  Kelompok NT (NineTeen)  👦🏻 
 - Ketua Kelompok  : 
-- Anggota 1       : 
+- Anggota 1       : Salwa Maharani - 21/481194/TK/53113
 - Anggota 2       : 

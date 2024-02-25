@@ -81,3 +81,4 @@ Solusi yang diberikan adalah aplikasi web **DiCheck**, yaitu aplikasi yang menge
 | Aksesibilitas dan keterjangkauan, kemudahan dalam menggunakan, akses yang terpercaya. |
 
 ### **f. Lean Canvas**
+![Lean Canvas]((https://github.com/salwamhrn11/DiCheck/blob/03b219032ede6e47c702dc7a5b6ea4cbee0a959e/pages/images/lean.jpg)https://github.com/salwamhrn11/DiCheck/blob/03b219032ede6e47c702dc7a5b6ea4cbee0a959e/pages/images/lean.jpg)

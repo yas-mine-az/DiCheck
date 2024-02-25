@@ -28,9 +28,10 @@ Pengguna dari DiCheck adalah pengguna yang mencari informasi tentang kondisi kes
 | Mendapatkan rekomendasi perawatan dari dokter | Sistem juga akan memberikan rekomendasi perawatan yang disarankan oleh dokter berdasarkan penyakit yang diprediksi. Informasi yang diberikan mencakup perawatan-perawatan yang dapat menyembuhkan penyakit pengguna. |
 
 #### _Entity Relationship Diagram_
-
+![ERD](https://github.com/salwamhrn11/DiCheck/blob/main/pages/images/ERD.png?raw=true)
 
 #### _Low-fidelity Wireframe_
-
+![Lofi](https://github.com/salwamhrn11/DiCheck/blob/main/pages/images/Lofiwireframe.png?raw=true)
 
 #### _Gantt-Chart pengerjaan proyek dalam kurun waktu 1 semester_
+![Gantt Chart](https://github.com/salwamhrn11/DiCheck/blob/main/pages/images/GanttChart?raw=true)

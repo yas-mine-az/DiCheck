@@ -1,0 +1,13 @@
+{
+  "name": "senpro-dicheck",
+  "version": "1.0.0",
+  "description": "DiCheck (meDical Check) merupakan suatu platform yang digunakan untuk mengembangkan layanan untuk prediksi penyakit berdasarkan input dari pengguna. Terdapat informasi saran pengobatan, obat, serta saran dari dokter terkait dengan perawatan.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

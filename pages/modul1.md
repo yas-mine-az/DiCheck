@@ -1,3 +1,9 @@
+---
+layout: default
+title: Modul 1
+description: Modul 1 Senior Project
+---
+
 # **Modul 1**
 [kembali ke halaman utama](./)
 

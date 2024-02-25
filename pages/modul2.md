@@ -4,8 +4,8 @@
 ### **Lab 2.4: Merancang SDLC Pengembangan Produk**
 ### Metodologi SDLC
 #### Metodologi yang digunakan:
-_Agile Model
-_
+_Agile Model_
+
 #### Alasan pemilihan metodologi:
 _Karena fleksibilitasnya yang cepat dalam penyesuaian terhadap perubahan kebutuhan serta pengetahuan medis yang berkembang, keterlibatan pengguna untuk meningkatkan akurasi dan relevansi aplikasi, serta fokus pada kualitas yang tinggi melalui pengujian yang terintegrasi dalam setiap tahap pengembangan._
 
@@ -17,7 +17,7 @@ _Memberikan sumber informasi medis yang terpercaya kepada pengguna, sehingga pen
 _Pengguna dari DiCheck adalah pengguna yang mencari informasi tentang kondisi kesehatan mereka sendiri atau orang lain. Kebutuhan utama dari para pengguna ini adalah akses mudah ke informasi medis yang terpercaya, rekomendasi pengobatan atau obat-obatan yang dapat dipercaya, serta mendapatkan informasi yang mudah dipahami terkait dengan gejala yang pengguna alami._
 
 #### Use Case Diagram
-- 
+- ![Use Case](https://github.com/salwamhrn11/DiCheck/blob/main/pages/images/usecase.jpg?raw=true)
 
 #### Functional requirements untuk use case yang telah dirancang
 | FR | Deskripsi |

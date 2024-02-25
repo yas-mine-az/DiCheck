@@ -13,7 +13,5 @@ Departemen Teknik Elektro dan Teknologi Informasi, Fakultas Teknik, Universitas 
 
 ### Modul 1 ###
 - [Modul 1](modul1.html)
-=======
-### Modul 1 ###
-[Modul 1](./modul1.html)
->>>>>>> 2d90bd3feedad3836d7d23ab0b90133b9b282757
+### Modul 2 ###
+[Modul 2](./modul2.html)

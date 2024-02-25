@@ -7,3 +7,4 @@ DiCheck (meDical Check) merupakan suatu platform yang digunakan untuk mengembang
 - Anggota 2       : Yasmine 'Arfa Zahira - 21/478786/TK/52758
 
 ### Modul 1 ###
+[Modul 1](./modul1.html)

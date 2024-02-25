@@ -25,7 +25,7 @@ _Pengguna dari DiCheck adalah pengguna yang mencari informasi tentang kondisi ke
 | Memasukkan gejala | Pengguna harus dapat memasukkan satu atau lebih gejala dengan menggunakan pilihan yang tersedia. Dalam hal ini, sistem harus menyediakan interface yang mudah digunakan dan dipahami oleh pengguna. |
 | Mendapatkan hasil prediksi | Setelah pengguna memasukkan gejala, sistem melakukan analisis dan prediksi penyakit berdasarkan gejala yang dimasukkan oleh pengguna. Hasil prediksi akan ditampilkan kepada pengguna dengan tampilan yang jelas. |
 | Mendapatkan rekomendasi obat | Selanjutnya, sistem akan memberikan rekomendasi obat yang sesuai dengan penyakit yang diprediksi. Setiap rekomendasi obat disertai dengan informasi tentang dosis yang dianjurkan, efek samping yang memungkinkan, peringatan, dan lain sebagainya. |
-| Mendapatkan rekomendasi perawatan dari dokter | -Sistem juga akan memberikan rekomendasi perawatan yang disarankan oleh dokter berdasarkan penyakit yang diprediksi. Informasi yang diberikan mencakup perawatan-perawatan yang dapat menyembuhkan penyakit pengguna. |
+| Mendapatkan rekomendasi perawatan dari dokter | Sistem juga akan memberikan rekomendasi perawatan yang disarankan oleh dokter berdasarkan penyakit yang diprediksi. Informasi yang diberikan mencakup perawatan-perawatan yang dapat menyembuhkan penyakit pengguna. |
 
 #### Entity Relationship Diagram
 -

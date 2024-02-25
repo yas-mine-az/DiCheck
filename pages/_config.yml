@@ -1,5 +1,3 @@
 title : "DiCheck (MeDical Check)"
 description : "Membantu pengguna dalam mengakses informasi terkait dengan gejala penyakit yang sedang dialaminya"
-exclude: ['README.md']
-
 theme: jekyll-theme-minimal

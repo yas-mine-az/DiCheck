@@ -12,6 +12,6 @@ Project Senior Teknologi Informasi
 Departemen Teknik Elektro dan Teknologi Informasi, Fakultas Teknik, Universitas Gadjah Mada
 
 ### Modul 1 ###
-- [Modul 1](modul1.html)
+[Modul 1](modul1.html)
 ### Modul 2 ###
 [Modul 2](./modul2.html)

@@ -17,7 +17,7 @@ _Memberikan sumber informasi medis yang terpercaya kepada pengguna, sehingga pen
 _Pengguna dari DiCheck adalah pengguna yang mencari informasi tentang kondisi kesehatan mereka sendiri atau orang lain. Kebutuhan utama dari para pengguna ini adalah akses mudah ke informasi medis yang terpercaya, rekomendasi pengobatan atau obat-obatan yang dapat dipercaya, serta mendapatkan informasi yang mudah dipahami terkait dengan gejala yang pengguna alami._
 
 #### Use Case Diagram
-- ![Use Case](https://github.com/salwamhrn11/DiCheck/blob/main/pages/images/usecase.jpg?raw=true)
+![Use Case](https://github.com/salwamhrn11/DiCheck/blob/main/pages/images/usecase.jpg?raw=true)
 
 #### Functional requirements untuk use case yang telah dirancang
 | FR | Deskripsi |

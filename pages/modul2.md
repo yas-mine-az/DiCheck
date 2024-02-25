@@ -40,4 +40,4 @@ Pengguna dari DiCheck adalah pengguna yang mencari informasi tentang kondisi kes
 ![Lofi](https://github.com/salwamhrn11/DiCheck/blob/main/pages/images/Lofiwireframe.png?raw=true)
 
 #### _Gantt-Chart pengerjaan proyek dalam kurun waktu 1 semester_
-![Gantt Chart](https://github.com/salwamhrn11/DiCheck/blob/main/pages/images/GanttChart?raw=true)
+![Gantt Chart](https://github.com/salwamhrn11/DiCheck/blob/main/pages/images/GanttChart.png?raw=true)

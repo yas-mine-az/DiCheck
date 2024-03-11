@@ -7,7 +7,7 @@ const getRecordsByUserId = async (req, res) => {
     const { user_id } = req.params;
     try {
         const recordList = await Record.find({ user_id });
-        if (!recordList) {
+        if (recordList.length === 0) {
             return res.status(404).json({ error: "Tidak ada medical record yang ditemukan untuk user tersebut" });
         }
         res.status(200).json(recordList);

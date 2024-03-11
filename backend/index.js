@@ -1,8 +1,17 @@
-const express = require('express');
-const mongoose = require('mongoose');
 require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+
+
 const app = express();
+const userRoutes = require('./routes/userRoutes');
+const medicalRecordRoutes = require('./routes/medicalRecordRoutes');
 const port = 3000;
+
+app.use(cors());
+app.use("/api/user", userRoutes);
+app.use("/api/record", medicalRecordRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI, {

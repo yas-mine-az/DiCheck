@@ -4,7 +4,7 @@ const {getRecordsByUserId, createRecord} = require("../controllers/medicalRecord
 const router = express.Router();
 
 // API GET RECORDS BY USER ID
-router.get("/:id", getRecordsByUserId);
+router.get("/:user_id", getRecordsByUserId);
 
 // API CREATE RECORD
 router.post("/", createRecord);

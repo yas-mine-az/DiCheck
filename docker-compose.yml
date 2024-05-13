@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb-container
+    ports:
+      - "27015:27015"
+    environment:
+      - MONGO_INITDB_DATABASE=dicheck
+    networks:
+      - dicheck-network
+
+  backend:
+    build: ./backend
+    container_name: backend-container
+    ports:
+      - "8080:8080"
+    networks:
+      - dicheck-network
+    depends_on:
+      - mongodb
+    environment:
+      - MONGODB_URI=mongodb+srv://admin:jxSBhRHh8K39qRDT@dicheck.zesrlnd.mongodb.net/dicheck?retryWrites=true&w=majority&appName=dicheck
+
+  frontend:
+    build: ./frontend
+    container_name: frontend-container
+    ports:
+      - "3000:3000"
+    networks:
+      - dicheck-network
+    depends_on:
+      - backend
+    environment:
+      - BACKEND_URL=http://localhost:8080
+
+networks:
+  dicheck-network:
+    driver: bridge

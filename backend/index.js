@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const app = express();
 const userRoutes = require('./routes/userRoutes');
 const medicalRecordRoutes = require('./routes/medicalRecordRoutes');
-const port = 3000;
+const port = 8080;
 
 app.use(cors());
 app.use(express.json()); // This should be placed before your routes

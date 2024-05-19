@@ -2,6 +2,14 @@ import * as React from "react";
 import Link from "next/link";
 
 function RegisterPage() {
+  const [username, setUsername] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  const handleRegister = () => {
+    localStorage.setItem('registerData', JSON.stringify({ username, email, password }));
+  };
+
   return (
     <div className="min-h-screen flex justify-center items-center w-full px-16 py-14 bg-zinc-50 max-md:px-5">
       <div className="w-full max-w-[985px] max-md:max-w-full">
@@ -40,22 +48,29 @@ function RegisterPage() {
                 className="mt-10 w-[392px] max-w-full px-3 py-3 bg-white rounded-xl border border-gray-600 text-black font-montserrat-light text-[15px] leading-normal"
                 placeholder="Username"
                 aria-label="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
               <input
                 className="mt-10 w-[392px] max-w-full px-3 py-3 bg-white rounded-xl border border-gray-600 text-black font-montserrat-light text-[15px] leading-normal"
                 placeholder="Email"
                 aria-label="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 className="mt-10 w-[392px] max-w-full px-3 py-3 bg-white rounded-xl border border-gray-600 text-black font-montserrat-light text-[15px] leading-normal"
+                type="password"
                 placeholder="Password"
                 aria-label="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <div className="mt-1 mb-6 text-gray-600 max-md:mr-2.5">
                 8+ characters
               </div>
               <Link href="/register-2">
-                <button className="self-center w-[392px] mt-10 font-montserrat-bold text-[18px] justify-center px-10 py-4 text-sm font-bold tracking-wide leading-5 text-center text-white whitespace-nowrap bg-gray-600 rounded-md">
+                <button onClick={handleRegister} className="self-center w-[392px] mt-10 font-montserrat-bold text-[18px] justify-center px-10 py-4 text-sm font-bold tracking-wide leading-5 text-center text-white whitespace-nowrap bg-gray-600 rounded-md">
                   Create account
                 </button>
               </Link>

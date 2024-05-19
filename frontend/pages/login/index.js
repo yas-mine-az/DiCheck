@@ -1,6 +1,8 @@
 import Button1 from "@/components/Button/button1";
 import * as React from "react";
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function LoginPage() {
   const [username, setUsername] = React.useState('');
@@ -13,20 +15,30 @@ function LoginPage() {
         username,
         password
       });
-
+  
       if (response.data) {
         console.log('Login berhasil');
         setUser(response.data.User);
-        window.location = '/homepage';
+        toast.success('Login berhasil', {
+          position: "top-center",
+          autoClose: 1000
+        });
+        setTimeout(() => {
+          window.location = '/homepage';
+        }, 2000);
       }
     } catch (error) {
       console.error('Login gagal', error);
-      window.alert('Password atau username salah');
+      toast.error('Password atau username salah', {
+        position: "top-center",
+        autoClose: 5000
+      });
     }
   };
 
   return (
     <div className="min-h-screen flex justify-center items-center w-full px-4 py-14 bg-zinc-50">
+      <ToastContainer />
       <div className="w-full max-w-[985px] flex flex-col md:flex-row gap-10 md:gap-20 items-center">
         <div className="flex flex-col w-full md:w-1/2">
           <div className="flex flex-col grow p-6 md:px-11 md:py-7 w-full bg-white rounded-3xl shadow-2xl text-stone-950">

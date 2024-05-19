@@ -1,4 +1,5 @@
 import Button1 from '../Button/button1';
+import Link from 'next/link';
 
 function Heading() {
     return (
@@ -21,9 +22,11 @@ function Heading() {
             </div>
             </div>
             <div className="mr-40">
-            <Button1>
-                Login
-            </Button1>
+            <Link href="/login">
+                <Button1>
+                    Login
+                </Button1>
+            </Link>
             </div>
         </div>
     </div>

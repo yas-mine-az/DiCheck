@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import Button1 from '../components/Button/button1';
 import Button2 from '../components/Button/button2';
 import Heading from '../components/Heading/heading';
+import Link from 'next/link';
 
 export default function LandingPage() {
   return (
@@ -41,12 +42,16 @@ export default function LandingPage() {
                 Get diagnosed or search for health articles now!
               </div>
               <div className="flex gap-2.5 self-start mt-8 text-sm leading-5 text-center">
-                <Button1>
-                  Check
-                </Button1>
-                <Button2>
-                  Read Articles
-                </Button2>
+                <Link href='/login'>
+                  <Button1>
+                    Check
+                  </Button1>
+                </Link>
+                <Link href='/articles'>
+                  <Button2>
+                    Read Articles
+                  </Button2>
+                </Link>
               </div>
             </div>
           </div>

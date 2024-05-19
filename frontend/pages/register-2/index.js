@@ -1,7 +1,7 @@
+import Button1 from "@/components/Button/button1";
 import * as React from "react";
-import Link from "next/link";
 
-function RegisterPage() {
+function RegisterPage2() {
   return (
     <div className="min-h-screen flex justify-center items-center w-full px-16 py-14 bg-zinc-50 max-md:px-5">
       <div className="w-full max-w-[985px] max-md:max-w-full">
@@ -17,11 +17,11 @@ function RegisterPage() {
           <div className="flex flex-col w-6/12 max-md:w-full max-md:ml-0">
             <div className="flex flex-col grow px-11 py-7 w-full bg-white rounded-3xl shadow-2xl text-stone-950 max-md:px-5 max-md:mt-10">
               <div className="flex gap-5 justify-between text-4xl font-bold text-gray-600 leading-[55.5px]">
-                <div className="text-[40px]"
+                <div className="text-[30px]"
                  style={{ 
                   fontFamily: 'Montserrat-Bold', 
                 }}>
-                  Register Now
+                  Just a little more ...
                 </div>
                 <img
                   loading="lazy"
@@ -34,31 +34,50 @@ function RegisterPage() {
                 style={{ 
                 fontFamily: 'Montserrat-Regular', 
               }}>
-                Let us take part on your health takecare!
+                And we are ready for the journey!
               </div>
               <input
                 className="mt-10 w-[392px] max-w-full px-3 py-3 bg-white rounded-xl border border-gray-600 text-black font-montserrat-light text-[15px] leading-normal"
-                placeholder="Username"
-                aria-label="Username"
+                placeholder="Full Name"
+                aria-label="Full Name"
               />
               <input
                 className="mt-10 w-[392px] max-w-full px-3 py-3 bg-white rounded-xl border border-gray-600 text-black font-montserrat-light text-[15px] leading-normal"
-                placeholder="Email"
-                aria-label="Email"
+                placeholder="Age"
+                aria-label="Age"
               />
-              <input
-                className="mt-10 w-[392px] max-w-full px-3 py-3 bg-white rounded-xl border border-gray-600 text-black font-montserrat-light text-[15px] leading-normal"
-                placeholder="Password"
-                aria-label="Password"
-              />
-              <div className="mt-1 mb-6 text-gray-600 max-md:mr-2.5">
-                8+ characters
-              </div>
-              <Link href="/register-2">
-                <button className="self-center w-[392px] mt-10 font-montserrat-bold text-[18px] justify-center px-10 py-4 text-sm font-bold tracking-wide leading-5 text-center text-white whitespace-nowrap bg-gray-600 rounded-md">
-                  Create account
+                <div className="mt-4 font-montserrat-light text-[15px] leading-normal">
+                    <p className="text-lg text-gray-600 tracking-normal mb-2"style={{ 
+                        fontFamily: 'Montserrat-Bold', 
+                    }}>Gender</p>
+                    <div className="flex items-center text-[15px] text-gray-600 tracking-normal mt-3"style={{ 
+                        fontFamily: 'Montserrat-Regular', 
+                    }}>
+                        <input 
+                            type="radio" 
+                            id="male" 
+                            name="gender" 
+                            value="male"
+                        />
+                        <label for="male" style={{ marginLeft: '10px' }}>Male</label><br/>
+                    </div>
+                    <div className="flex items-center text-[15px] text-gray-600 tracking-normal mt-4 mb-4" style={{ 
+                        fontFamily: 'Montserrat-Regular', 
+                    }}>
+                        <input 
+                            type="radio" 
+                            id="female" 
+                            name="gender" 
+                            value="female"
+                        />
+                        <label for="female" style={{ marginLeft: '10px' }}>Female</label><br/>
+                    </div>
+                </div>
+                <button
+                    className="self-center w-[392px] mt-5 font-montserrat-bold text-[18px] justify-center px-10 py-4 text-sm font-bold tracking-wide leading-5 text-center text-white whitespace-nowrap bg-gray-600 rounded-md"
+                >
+                    Create account
                 </button>
-              </Link>
               <div className="self-center mt-10 text-xs leading-4 text-center text-gray-600 underline w-[281px]">
                 By continuing I agree with the{" "}
                 <span className="text-gray-600 underline">
@@ -75,4 +94,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default RegisterPage2;

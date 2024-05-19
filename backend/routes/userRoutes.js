@@ -1,7 +1,10 @@
 const express = require('express');
-const {findAllUser, createUser, deleteUserById, updateUserById} = require("../controllers/userController");
+const {findAllUser, createUser, deleteUserById, updateUserById, loginUser} = require("../controllers/userController");
 
 const router = express.Router();
+
+// API LOGIN
+router.post("/login", loginUser);
 
 // API GET ALL USER
 router.get("/", findAllUser);

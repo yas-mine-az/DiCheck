@@ -85,9 +85,30 @@ const updateUserById = async (req, res) => {
     }
 };
 
+const loginUser = async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+      const user = await User.findOne({ username });
+
+      if (!user) {
+          return res.status(400).json({ error: "Username tidak ditemukan" });
+      }
+
+      if (user.password !== password) {
+          return res.status(400).json({ error: "Password salah" });
+      }
+
+      res.status(200).json({ message: "Login berhasil", User: user });
+  } catch (err) {
+      res.status(500).json({ error: err.message });
+  }
+};
+
 module.exports = {
     findAllUser,
     createUser,
     deleteUserById,
-    updateUserById
+    updateUserById,
+    loginUser
 };

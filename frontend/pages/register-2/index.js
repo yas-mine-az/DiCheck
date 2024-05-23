@@ -65,12 +65,14 @@ function RegisterPage2() {
                 }}>
                   Just a little more ...
                 </div>
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/cc2205667538b7debf275b20d18ecf26649888f0f91e8a635a88297bbffff3b7?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
-                  className="shrink-0 self-start aspect-square w-[23px]"
-                  alt="Logo"
-                />
+                <a href="/">
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/cc2205667538b7debf275b20d18ecf26649888f0f91e8a635a88297bbffff3b7?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
+                    className="shrink-0 self-start aspect-square w-[23px]"
+                    alt="Logo"
+                  />
+                </a>
               </div>
               <div className="text-lg text-gray-600 tracking-normal"
                 style={{ 
@@ -134,13 +136,8 @@ function RegisterPage2() {
                 >
                     Create account
                 </button>
-              <div className="self-center mt-10 text-xs leading-4 text-center text-gray-600 underline w-[281px]">
-                By continuing I agree with the{" "}
-                <span className="text-gray-600 underline">
-                  Terms & Conditions
-                </span>
-                ,{" "}
-                <span className="text-gray-600 underline">Privacy Policy</span>
+              <div className="mt-4 text-center text-sm text-gray-600">
+                Sudah memiliki akun? <a href="/login" className="text-blue-500 underline">Login sekarang</a>
               </div>
             </div>
           </div>

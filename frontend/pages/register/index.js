@@ -1,13 +1,25 @@
 import * as React from "react";
 import Link from "next/link";
+import { useRouter } from 'next/router';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function RegisterPage() {
+  const router = useRouter();
   const [username, setUsername] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
-  const handleRegister = () => {
+  const handleRegister = (e) => {
+    if (!username || !email || !password) {
+      toast.error('Mohon isi seluruh data!', {
+        position: "top-center",
+        autoClose: 1000,
+      });
+      return;
+    }
     localStorage.setItem('registerData', JSON.stringify({ username, email, password }));
+    router.push('/register-2');
   };
 
   return (
@@ -31,12 +43,14 @@ function RegisterPage() {
                 }}>
                   Register Now
                 </div>
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/cc2205667538b7debf275b20d18ecf26649888f0f91e8a635a88297bbffff3b7?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
-                  className="shrink-0 self-start aspect-square w-[23px]"
-                  alt="Logo"
-                />
+                <a href="/">
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/cc2205667538b7debf275b20d18ecf26649888f0f91e8a635a88297bbffff3b7?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
+                    className="shrink-0 self-start aspect-square w-[23px]"
+                    alt="Logo"
+                  />
+                </a>
               </div>
               <div className="text-lg text-gray-600 tracking-normal"
                 style={{ 
@@ -69,23 +83,17 @@ function RegisterPage() {
               <div className="mt-1 mb-6 text-gray-600 max-md:mr-2.5">
                 8+ characters
               </div>
-              <Link href="/register-2">
-                <button onClick={handleRegister} className="self-center w-[392px] mt-10 font-montserrat-bold text-[18px] justify-center px-10 py-4 text-sm font-bold tracking-wide leading-5 text-center text-white whitespace-nowrap bg-gray-600 rounded-md">
-                  Create account
-                </button>
-              </Link>
-              <div className="self-center mt-10 text-xs leading-4 text-center text-gray-600 underline w-[281px]">
-                By continuing I agree with the{" "}
-                <span className="text-gray-600 underline">
-                  Terms & Conditions
-                </span>
-                ,{" "}
-                <span className="text-gray-600 underline">Privacy Policy</span>
+              <button onClick={handleRegister} className="self-center w-[392px] mt-10 font-montserrat-bold text-[18px] justify-center px-10 py-4 text-sm font-bold tracking-wide leading-5 text-center text-white whitespace-nowrap bg-gray-600 rounded-md">
+                Create account
+              </button>
+              <div className="mt-4 text-center text-sm text-gray-600">
+                Sudah memiliki akun? <a href="/login" className="text-blue-500 underline">Login sekarang</a>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

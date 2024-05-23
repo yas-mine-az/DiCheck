@@ -17,4 +17,13 @@
     src: url('/fonts/Montserrat-Light.ttf') format('truetype');
   }
 
+@font-face {
+    font-family: 'Montserrat-Semibold';
+    src: url('/fonts/Montserrat-Semibold.ttf') format('truetype');
+  }
+
+@font-face {
+    font-family: 'Montserrat-Medium';
+    src: url('/fonts/Montserrat-Medium.ttf') format('truetype');
+  }
   

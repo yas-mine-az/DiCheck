@@ -14,7 +14,7 @@ export default function LandingPage() {
             <div className="flex flex-col justify-center self-stretch pr-8 my-auto font-bold tracking-wide leading-[150%] max-md:mt-10 max-md:max-w-full">
               <div 
                 style={{ 
-                  fontFamily: 'Montserrat-Regular', 
+                  fontFamily: 'Montserrat-Semibold', 
                   fontSize: '20px', 
                   fontWeight: '400',
                   letterSpacing: '0.01em' 
@@ -24,7 +24,7 @@ export default function LandingPage() {
               </div>
               <div
                 style={{ 
-                  fontFamily: 'Montserrat-Regular', 
+                  fontFamily: 'Montserrat-Bold', 
                 }} 
                 className="mt-6 text-6xl leading-[80px] text-slate-800 max-md:max-w-full max-md:text-4xl max-md:leading-[62px]"
               >

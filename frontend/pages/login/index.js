@@ -44,12 +44,14 @@ function LoginPage() {
           <div className="flex flex-col grow p-6 md:px-11 md:py-7 w-full bg-white rounded-3xl shadow-2xl text-stone-950">
             <div className="flex justify-between text-4xl font-bold text-gray-600 mb-6">
               <div className="font-montserrat-bold text-[40px]">Sign In</div>
-              <img
-                loading="lazy"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/cc2205667538b7debf275b20d18ecf26649888f0f91e8a635a88297bbffff3b7?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
-                className="shrink-0 self-start aspect-square w-[23px]"
-                alt="Logo"
-              />
+              <a href="/">
+                <img
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/cc2205667538b7debf275b20d18ecf26649888f0f91e8a635a88297bbffff3b7?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
+                  className="shrink-0 self-start aspect-square w-[23px]"
+                  alt="Logo"
+                />
+              </a>
             </div>
             <div className="font-montserrat-light text-lg text-gray-600 tracking-normal mb-6">
               Log in and check now!
@@ -75,6 +77,9 @@ function LoginPage() {
             >
               Sign in
             </Button1>
+            <div className="mt-4 text-center text-sm text-gray-600">
+              Belum memiliki akun? <a href="/register" className="text-blue-500 underline">Daftar sekarang</a>
+            </div>
           </div>
         </div>
         <div className="flex w-full md:w-1/2">

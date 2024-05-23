@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const app = express();
 const userRoutes = require('./routes/userRoutes');
 const medicalRecordRoutes = require('./routes/medicalRecordRoutes');
+const articleRoutes = require('./routes/articleRoutes');
 const port = 8080;
 
 app.use(cors());
@@ -13,6 +14,7 @@ app.use(express.json()); // This should be placed before your routes
 
 app.use("/api/user", userRoutes);
 app.use("/api/record", medicalRecordRoutes);
+app.use("/api/article", articleRoutes);
 
 app.use((req, res, next) => {
   console.log(req.path, req.method);

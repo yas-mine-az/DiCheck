@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Link from 'next/link';
 
-function ArticleCard({ date, title, description, imgSrc, imgAlt, href }) {
+function ArticleCard({ date, title, description, imgSrc, imgAlt, href, width }) {
   return (
-    <article className="flex flex-col w-[30%] max-md:ml-0 max-md:w-full">
+    <article className={`flex flex-col ${width} max-md:ml-0 max-md:w-full`}>
     <Link href={href}>
           <img loading="lazy" src={imgSrc} alt={imgAlt} className="w-full aspect-[1.49] max-md:max-w-full" />
     </Link>
@@ -12,7 +12,7 @@ function ArticleCard({ date, title, description, imgSrc, imgAlt, href }) {
       <p style={{ 
           fontFamily: 'Montserrat-Bold', 
           fontSize: '20px', 
-      }} className="flex-1 my-auto">Dicheck Admin</p>
+      }} className="text-slate-800 flex-1 my-auto">Dicheck Admin</p>
     </div>
     <time style={{ 
           fontFamily: 'Montserrat-Bold', 
@@ -24,7 +24,7 @@ function ArticleCard({ date, title, description, imgSrc, imgAlt, href }) {
               fontFamily: 'Montserrat-Semibold', 
               fontSize: '20px', 
           }}
-          className="mt-4 text-2xl font-regular leading-8 text-gray-600 max-md:max-w-full">{title}</h2>
+          className="mt-4 text-2xl font-regular leading-8 text-slate-800 max-md:max-w-full">{title}</h2>
     </Link>
     <p style={{ 
           fontFamily: 'Montserrat-Light', 

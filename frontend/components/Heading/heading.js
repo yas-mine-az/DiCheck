@@ -15,10 +15,9 @@ function Heading() {
                 DiCheck
             </div>
             <div className="flex flex-auto gap-10 justify-start self-start text-sm tracking-wide leading-6 text-center text-neutral-500">
-                <button className="justify-center py-2">Home</button>
-                <button className="justify-center px-1.5 py-2">Check</button>
-                <button className="justify-center py-2">Articles</button>
-                <button className="justify-center px-1.5 py-2">History</button>
+                <Link href="/homepage"> <button className="justify-center py-2">Home</button> </Link>
+                <Link href="/check-disease"> <button className="justify-center px-1.5 py-2">Check</button> </Link>
+                <Link href="/articles"> <button className="justify-center py-2">Articles</button> </Link>
             </div>
             </div>
             <div className="mr-40">

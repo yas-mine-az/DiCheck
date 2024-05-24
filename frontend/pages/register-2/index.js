@@ -132,7 +132,7 @@ function RegisterPage2() {
                 </div>
                 <button
                     onClick={handleSubmit}
-                    className="self-center w-[392px] mt-5 font-montserrat-bold text-[18px] justify-center px-10 py-4 text-sm font-bold tracking-wide leading-5 text-center text-white whitespace-nowrap bg-gray-600 rounded-md"
+                    className="hover:bg-gray-900 self-center w-[392px] mt-5 font-montserrat-bold text-[18px] justify-center px-10 py-4 text-sm font-bold tracking-wide leading-5 text-center text-white whitespace-nowrap bg-gray-600 rounded-md"
                 >
                     Create account
                 </button>

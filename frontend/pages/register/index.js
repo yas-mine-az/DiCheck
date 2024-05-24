@@ -83,7 +83,7 @@ function RegisterPage() {
               <div className="mt-1 mb-6 text-gray-600 max-md:mr-2.5">
                 8+ characters
               </div>
-              <button onClick={handleRegister} className="self-center w-[392px] mt-10 font-montserrat-bold text-[18px] justify-center px-10 py-4 text-sm font-bold tracking-wide leading-5 text-center text-white whitespace-nowrap bg-gray-600 rounded-md">
+              <button onClick={handleRegister} className="hover:bg-gray-900 self-center w-[392px] mt-10 font-montserrat-bold text-[18px] justify-center px-10 py-4 text-sm font-bold tracking-wide leading-5 text-center text-white whitespace-nowrap bg-gray-600 rounded-md">
                 Create account
               </button>
               <div className="mt-4 text-center text-sm text-gray-600">

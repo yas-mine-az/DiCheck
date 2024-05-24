@@ -5,7 +5,7 @@ const Button1 = ({ children, onClick }) => {
         style={{ 
           fontFamily: 'Montserrat-Bold'
         }}
-        className="justify-center px-10 py-4 text-sm font-bold tracking-wide leading-5 text-center text-white whitespace-nowrap bg-gray-600 rounded-md"
+        className="justify-center px-10 py-4 text-sm font-bold tracking-wide leading-5 text-center text-white whitespace-nowrap hover:bg-gray-900 bg-gray-600 rounded-md"
       >
         {children}
       </button>

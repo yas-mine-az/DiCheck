@@ -80,14 +80,13 @@ export default function MyComponent() {
                             DiCheck
                         </div>
                         <div className="flex flex-auto gap-10 justify-start self-start text-sm tracking-wide leading-6 text-center text-neutral-500">
-                            <button className="justify-center py-2">Home</button>
-                            <button className="justify-center px-1.5 py-2">Check</button>
-                            <button className="justify-center py-2">Articles</button>
-                            <button className="justify-center px-1.5 py-2">History</button>
+                            <Link href="/homepage"> <button className="justify-center py-2">Home</button> </Link>
+                            <Link href="/check-disease"> <button className="justify-center px-1.5 py-2">Check</button> </Link>
+                            <Link href="/articles"> <button className="justify-center py-2">Articles</button> </Link>
                         </div>
                     </div>
                     <div className="mr-40">
-                        <Link href="/login">
+                        <Link href="/check-disease">
                             <Button1>
                                 Check now
                             </Button1>
@@ -101,7 +100,7 @@ export default function MyComponent() {
                     title="Manfaat Olahraga Rutin untuk Kesehatan Mental"
                     images={[
                         "https://cdn.builder.io/api/v1/image/assets/TEMP/622e83f2905726afcb91f107860589582ffac0cecd66b8008c54c908e651cc93?apiKey=7fd2b033b9574f39882fe9ef4728cd45&",
-                        "https://cdn.builder.io/api/v1/image/assets/TEMP/3cf3fdbe2e196303517e7f82042b8420167b16ff041a20b6efc592c5f4d834ca?apiKey=7fd2b033b9574f39882fe9ef4728cd45&",
+                        "https://cdn.builder.io/api/v1/image/assets/TEMP/f9cc5a8e566b8e56276b649dc4d7f94624c0558002b74d923889eb1a75bbca8c?apiKey=7fd2b033b9574f39882fe9ef4728cd45&",
                         "https://cdn.builder.io/api/v1/image/assets/TEMP/7fa6ea1dd7be1dd595ce10649a28505db973e23ab25058436e5db754fe38d94e?apiKey=7fd2b033b9574f39882fe9ef4728cd45&",
                     ]}
                     authorImage="https://cdn.builder.io/api/v1/image/assets/TEMP/0a71abac13304cf5bdd69390001fdbe782de706b075a608cc7d5bdb17b9bbefa?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"

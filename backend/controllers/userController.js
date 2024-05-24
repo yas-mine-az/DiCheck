@@ -105,10 +105,28 @@ const loginUser = async (req, res) => {
   }
 };
 
+const getUserById = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "Tidak ada user dengan ID tersebut" });
+  }
+
+  try {
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ error: "Tidak ada user dengan ID tersebut" });
+    }
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 module.exports = {
     findAllUser,
     createUser,
     deleteUserById,
     updateUserById,
-    loginUser
+    loginUser,
+    getUserById
 };

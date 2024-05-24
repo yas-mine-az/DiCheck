@@ -26,7 +26,7 @@ export default function LandingPage() {
                 style={{ 
                   fontFamily: 'Montserrat-Bold', 
                 }} 
-                className="mt-6 text-6xl leading-[80px] text-slate-800 max-md:max-w-full max-md:text-4xl max-md:leading-[62px]"
+                className="mt-6 text-7xl leading-[80px] text-slate-800 max-md:max-w-full max-md:text-4xl max-md:leading-[62px]"
               >
                 A Great Place to Receive Care
               </div>
@@ -42,7 +42,7 @@ export default function LandingPage() {
                 Get diagnosed or search for health articles now!
               </div>
               <div className="flex gap-2.5 self-start mt-8 text-sm leading-5 text-center">
-                <Link href='/login'>
+                <Link href='/check-disease'>
                   <Button1>
                     Check
                   </Button1>
@@ -60,7 +60,7 @@ export default function LandingPage() {
               <img
                 loading="lazy"
                 srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/782f7e53bf2fbe1516a85000836d350eeaae8d64b29b65072fb5ddd1bffd74ad?apiKey=7fd2b033b9574f39882fe9ef4728cd45&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/782f7e53bf2fbe1516a85000836d350eeaae8d64b29b65072fb5ddd1bffd74ad?apiKey=7fd2b033b9574f39882fe9ef4728cd45&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/782f7e53bf2fbe1516a85000836d350eeaae8d64b29b65072fb5ddd1bffd74ad?apiKey=7fd2b033b9574f39882fe9ef4728cd45&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/782f7e53bf2fbe1516a85000836d350eeaae8d64b29b65072fb5ddd1bffd74ad?apiKey=7fd2b033b9574f39882fe9ef4728cd45&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/782f7e53bf2fbe1516a85000836d350eeaae8d64b29b65072fb5ddd1bffd74ad?apiKey=7fd2b033b9574f39882fe9ef4728cd45&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/782f7e53bf2fbe1516a85000836d350eeaae8d64b29b65072fb5ddd1bffd74ad?apiKey=7fd2b033b9574f39882fe9ef4728cd45&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/782f7e53bf2fbe1516a85000836d350eeaae8d64b29b65072fb5ddd1bffd74ad?apiKey=7fd2b033b9574f39882fe9ef4728cd45&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/782f7e53bf2fbe1516a85000836d350eeaae8d64b29b65072fb5ddd1bffd74ad?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
-                className="max-w-full aspect-[0.93] w-[472px]"
+                className="max-w-full aspect-[0.93] w-[543.5px]"
               />
             </div>
           </div>

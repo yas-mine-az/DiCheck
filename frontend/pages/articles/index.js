@@ -18,14 +18,13 @@ function MyComponent() {
                     DiCheck
                 </div>
                 <div className="flex flex-auto gap-10 justify-start self-start text-sm tracking-wide leading-6 text-center text-neutral-500">
-                    <button className="justify-center py-2">Home</button>
-                    <button className="justify-center px-1.5 py-2">Check</button>
-                    <button className="justify-center py-2">Articles</button>
-                    <button className="justify-center px-1.5 py-2">History</button>
+                  <Link href="/homepage"> <button className="justify-center py-2">Home</button> </Link>
+                  <Link href="/check-disease"> <button className="justify-center px-1.5 py-2">Check</button> </Link>
+                  <Link href="/articles"> <button className="justify-center py-2">Articles</button> </Link>
                 </div>
                 </div>
                 <div className="mr-40">
-                <Link href="/login">
+                <Link href="/check-disease">
                     <Button1>
                         Check now
                     </Button1>
@@ -37,7 +36,7 @@ function MyComponent() {
         <h2 
         style={{ 
             fontFamily: 'Montserrat-Bold', 
-        }} className="text-5xl font-bold text-gray-600 leading-[61.2px] max-md:max-w-full max-md:text-4xl">
+        }} className="text-5xl font-bold text-slate-800 leading-[61.2px] max-md:max-w-full max-md:text-4xl">
           Medical Article
         </h2>
         <section className="mt-10 flex flex-wrap justify-between max-md:max-w-full">
@@ -46,9 +45,10 @@ function MyComponent() {
                 date="04 June 2023"
                 title="Manfaat Olahraga Rutin untuk Kesehatan Mental"
                 description="Olahraga tidak hanya penting untuk kesehatan fisik, tetapi juga memiliki banyak manfaat untuk kesehatan mental."
-                imgSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/2dee867270ae73e565dda0a09101ddacdaec11a630a6286647269c3e2c8be9a1?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
+                imgSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/f9cc5a8e566b8e56276b649dc4d7f94624c0558002b74d923889eb1a75bbca8c?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
                 imgAlt="Manfaat Olahraga Rutin untuk Kesehatan Mental"
                 href="/articles/article-1"
+                width="w-[30%]"
                 />
                 <ArticleCard
                 date="03 June 2023"
@@ -57,6 +57,7 @@ function MyComponent() {
                 imgSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/4b4d2fe1e80d88dc03b72422c7d0bfd916ddc898ce2338bdc27f9e027a34adaf?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
                 imgAlt="Pentingnya Vaksinasi dalam Mencegah Penyakit Menular"
                 href="/articles/article-2"
+                width="w-[30%]"
                 />
                 <ArticleCard
                 date="01 June 2023"
@@ -65,6 +66,7 @@ function MyComponent() {
                 imgSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/c191c7d43429783bafc4845f894dcb1b98bbb5e836b5bab44d114f0520d16df7?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
                 imgAlt="Pentingnya Pola Makan Sehat untuk Mencegah Penyakit Kronis"
                 href="/articles/article-3"
+                width="w-[30%]"
                 />
             </div>
             </section>

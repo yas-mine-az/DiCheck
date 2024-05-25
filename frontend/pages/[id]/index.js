@@ -8,6 +8,9 @@ import { useRouter } from 'next/router';
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = React.useRef(null);
+  const [userName, setUserName] = useState('Loading...');
+
+  const user_id = '65ee97ce710ef0b96a2945dd';
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -26,6 +29,16 @@ function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const res = await axios.get(`http://localhost:8080/api/user/one/${user_id}`);
+      console.log(res.data);
+      setUserName(res.data.first_name + ' ' + res.data.last_name);
+    };
+
+    fetchProfile();
+  }, []);
+
   return (
     <header className="flex gap-5 justify-between px-8 py-8 w-full bg-white rounded-3xl border border-violet-100 border-solid shadow-sm max-md:flex-wrap max-md:px-5 max-md:max-w-full">
       <div className="flex gap-5 justify-between max-md:flex-wrap">
@@ -37,7 +50,7 @@ function Navbar() {
             alt="DiCheck logo"
           />
           <div style={{ fontFamily: 'Montserrat-Bold', fontSize: '20px' }} className="my-auto">
-            <p>DiCheck</p>
+            <a href="/homepage">DiCheck</a>
           </div>
           <div style={{ borderLeft: '3px solid #2d3748', height: '30px', alignSelf: 'center' }}></div>
           <div style={{ fontFamily: 'Montserrat-Regular', fontSize: '18 px', fontWeight: '400', letterSpacing: '1px' }} className="my-auto text-neutral-500">
@@ -54,7 +67,7 @@ function Navbar() {
             alt="User Avatar"
           />
           <div style={{ fontFamily: 'Montserrat-Bold', fontSize: '15px' }} className="text-slate-800 self-stretch my-auto mr-8">
-            <p>Nama User</p>
+            <p>{userName}</p>
             <p className="text-neutral-500" style={{fontFamily: 'Montserrat-Light'}}>User</p>
           </div>
           <img

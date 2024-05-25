@@ -49,7 +49,7 @@ function Navbar() {
             alt="DiCheck logo"
           />
           <div style={{ fontFamily: 'Montserrat-Bold', fontSize: '20px' }} className="my-auto">
-            <p>DiCheck</p>
+            <a href="/homepage">DiCheck</a>
           </div>
           <div style={{ borderLeft: '3px solid #2d3748', height: '30px', alignSelf: 'center' }}></div>
           <div style={{ fontFamily: 'Montserrat-Regular', fontSize: '18 px', fontWeight: '400', letterSpacing: '1px' }} className="my-auto text-neutral-500">
@@ -148,6 +148,9 @@ function Card({ children }) {
 
 function MyComponent() {
   const [checks, setChecks] = useState([]);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(8);
+  const [totalPages, setTotalPages] = useState(0);
   const [totalChecks, setTotalChecks] = useState(0);
   const [totalChecksToday, setTotalChecksToday] = useState(0);
   const [lastCheckTime, setLastCheckTime] = useState(null);
@@ -156,13 +159,19 @@ function MyComponent() {
   useEffect(() => {
     async function fetchChecks() {
       try {
-        const response = await axios.get(`http://localhost:8080/api/record/${userId}`);
-        setChecks(response.data);
+        const response = await axios.get(`http://localhost:8080/api/record/${userId}?page=${page}&limit=${limit}`);
+        setChecks(response.data.records);
+        setTotalPages(response.data.totalPages);
+        console.log(response.data);
       } catch (error) {
         console.error('Error fetching check records:', error);
       }
     }
 
+    fetchChecks();
+  }, [userId, page, limit]);
+
+  useEffect(() => {
     async function fetchTotalChecks() {
       try {
         const response = await axios.get(`http://localhost:8080/api/record/total/${userId}`);
@@ -190,7 +199,6 @@ function MyComponent() {
       }
     }
 
-    fetchChecks();
     fetchTotalChecks();
     fetchTotalChecksToday();
     fetchLatestCheckTime();
@@ -248,6 +256,39 @@ function MyComponent() {
               {checks.length === 0 ? (
                 <p>No checks found.</p>
               ) : (
+                <>
+                <div className="pagination">
+                  <button className="text-sm font-bold tracking-wide leading-5 text-center text-white whitespace-nowrap rounded-md max-md:px-5 max-md:mt-10 max-md:max-w-full"
+                    onClick={() => setPage(prevPage => prevPage - 1)} 
+                    disabled={page === 1} 
+                    style={{
+                      color: page === 1 ? '#ccc' : '#008CBA', 
+                      cursor: page === 1 ? 'not-allowed' : 'pointer', 
+                      fontFamily: 'Montserrat-Bold',
+                      fontSize: '20px', 
+                      alignSelf: 'center', 
+                      marginRight: '20px',
+                      transition: 'color 0.3s ease' 
+                    }}
+                  >
+                    Previous
+                  </button>
+                  <button className="text-sm font-bold tracking-wide leading-5 text-center text-white whitespace-nowrap rounded-md max-md:px-5 max-md:mt-10 max-md:max-w-full"
+                    onClick={() => setPage(prevPage => prevPage + 1)} 
+                    disabled={page === totalPages} 
+                    style={{
+                      color: page === totalPages ? '#ccc' : '#008CBA', 
+                      cursor: page === totalPages ? 'not-allowed' : 'pointer', 
+                      fontFamily: 'Montserrat-Bold',
+                      fontSize: '20px',  
+                      alignSelf: 'center', 
+                      marginBottom: '40px',
+                      transition: 'color 0.3s ease' 
+                    }}
+                  >
+                    Next
+                  </button>
+                </div>
                 <ul>
                   {checks.map((check) => (
                     <li key={check._id} className="grid grid-cols-2 mb-10" style={{ gridTemplateColumns: '1.5fr 1.5fr' }}>
@@ -263,6 +304,7 @@ function MyComponent() {
                     </li>
                   ))}
                 </ul>
+                </>
               )}
             </div>
           </Card>

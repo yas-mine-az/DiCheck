@@ -49,7 +49,7 @@ function Navbar() {
             alt="DiCheck logo"
           />
           <div style={{ fontFamily: 'Montserrat-Bold', fontSize: '20px' }} className="my-auto">
-            <p>DiCheck</p>
+            <a href="/homepage">DiCheck</a>
           </div>
           <div style={{ borderLeft: '3px solid #2d3748', height: '30px', alignSelf: 'center' }}></div>
           <div style={{ fontFamily: 'Montserrat-Regular', fontSize: '18 px', fontWeight: '400', letterSpacing: '1px' }} className="my-auto text-neutral-500">

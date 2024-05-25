@@ -5,12 +5,26 @@ const mongoose = require("mongoose");
 // Get Prediction by UserId
 const getRecordsByUserId = async (req, res) => {
     const { user_id } = req.params;
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 7;
+
     try {
-        const recordList = await Record.find({ user_id });
+        const recordList = await Record.find({ user_id })
+            .sort({ record_date: -1 })
+            .skip((page - 1) * limit)
+            .limit(limit);
+
+        const totalRecords = await Record.countDocuments({ user_id });
+
         if (recordList.length === 0) {
             return res.status(404).json({ error: "Tidak ada medical record yang ditemukan untuk user tersebut" });
         }
-        res.status(200).json(recordList);
+
+        res.status(200).json({
+            totalPages: Math.ceil(totalRecords / limit),
+            currentPage: page,
+            records: recordList
+        });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }

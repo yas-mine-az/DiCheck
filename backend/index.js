@@ -3,12 +3,14 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+
 const app = express();
 const userRoutes = require('./routes/userRoutes');
 const medicalRecordRoutes = require('./routes/medicalRecordRoutes');
 const articleRoutes = require('./routes/articleRoutes');
 const port = 8080;
 
+app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json()); // This should be placed before your routes
 

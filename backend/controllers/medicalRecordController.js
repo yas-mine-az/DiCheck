@@ -45,7 +45,7 @@ const getRecordsByRecordId = async (req, res) => {
 
 // Create Prediction
 const createRecord = async (req, res) => {
-    const {user_id, symptomps, disease, treatment_advice, medicine_name, medicine_desc, record_date} = req.body;
+    const {user_id, symptoms, disease, description, medications, recommendations, record_date} = req.body;
     try {
         const user = await User.findById(user_id);
 
@@ -55,11 +55,11 @@ const createRecord = async (req, res) => {
 
         const record = await Record.create({
             user_id, 
-            symptomps, 
+            symptoms, 
             disease, 
-            treatment_advice, 
-            medicine_name, 
-            medicine_desc, 
+            description, 
+            medications, 
+            recommendations, 
             record_date,
         });
         
@@ -111,9 +111,10 @@ const getTotalRecordsTodayByUserId = async (req, res) => {
 
 const getLatestRecordTime = async (req, res) => {
     try {
-        const record = await Record.findOne().sort({record_date: -1});
+        const { user_id } = req.params;
+        const record = await Record.findOne({ user_id: user_id }).sort({record_date: -1});
         if (!record) {
-            return res.status(404).json({ error: "No records found" });
+            return res.status(404).json({ error: "No records found for this user" });
         }
         res.status(200).json({ latestRecordTime: record.record_date });
     } catch (err) {

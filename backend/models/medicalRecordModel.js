@@ -6,7 +6,7 @@ const MedicalRecordSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
-  symptomps: {
+  symptoms: {
     type: [String],
     required: true,
   },
@@ -14,15 +14,15 @@ const MedicalRecordSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  treatment_advice: {
+  description: {
     type: [String],
     required: true,
   },
-  medicine_name: {
+  medications: {
     type: [String],
     required: true,
   },
-  medicine_desc: {
+  recommendations: {
     type: [String],
     required: true,
   },

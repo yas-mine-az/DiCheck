@@ -19,6 +19,7 @@ function LoginPage() {
       if (response.data) {
         console.log('Login berhasil');
         setUser(response.data.User);
+        localStorage.setItem('user', JSON.stringify(response.data.User));
         toast.success('Login berhasil', {
           position: "top-center",
           autoClose: 1000
@@ -47,7 +48,7 @@ function LoginPage() {
               <a href="/">
                 <img
                   loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/cc2205667538b7debf275b20d18ecf26649888f0f91e8a635a88297bbffff3b7?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
+                  src="/images/close.svg"
                   className="shrink-0 self-start aspect-square w-[23px]"
                   alt="Logo"
                 />
@@ -58,6 +59,7 @@ function LoginPage() {
             </div>
             <input
               className="mb-4 w-full px-3 py-3 bg-white rounded-xl border border-gray-600 text-black font-montserrat-light text-[15px] leading-normal"
+              style={{ fontFamily: 'Montserrat-Regular' }}
               placeholder="Username"
               aria-label="Username"
               value={username}
@@ -65,6 +67,7 @@ function LoginPage() {
             />
             <input
               className="mb-4 w-full px-3 py-3 bg-white rounded-xl border border-gray-600 text-black font-montserrat-light text-[15px] leading-normal"
+              style={{ fontFamily: 'Montserrat-Regular' }}
               type="password"
               placeholder="Password"
               aria-label="Password"
@@ -77,7 +80,7 @@ function LoginPage() {
             >
               Sign in
             </Button1>
-            <div className="mt-4 text-center text-sm text-gray-600">
+            <div style={{ fontFamily: 'Montserrat-Regular' }} className="mt-4 text-center text-sm text-gray-600">
               Belum memiliki akun? <a href="/register" className="text-blue-500 underline">Daftar sekarang</a>
             </div>
           </div>
@@ -85,7 +88,7 @@ function LoginPage() {
         <div className="flex w-full md:w-1/2">
           <img
             loading="lazy"
-            srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/b0508d42ba886f1bc782cf679fe2412ee3c0c84b30e447010be6f3d68e475ae9?apiKey=7fd2b033b9574f39882fe9ef4728cd45&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/b0508d42ba886f1bc782cf679fe2412ee3c0c84b30e447010be6f3d68e475ae9?apiKey=7fd2b033b9574f39882fe9ef4728cd45&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/b0508d42ba886f1bc782cf679fe2412ee3c0c84b30e447010be6f3d68e475ae9?apiKey=7fd2b033b9574f39882fe9ef4728cd45&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/b0508d42ba886f1bc782cf679fe2412ee3c0c84b30e447010be6f3d68e475ae9?apiKey=7fd2b033b9574f39882fe9ef4728cd45&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/b0508d42ba886f1bc782cf679fe2412ee3c0c84b30e447010be6f3d68e475ae9?apiKey=7fd2b033b9574f39882fe9ef4728cd45&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/b0508d42ba886f1bc782cf679fe2412ee3c0c84b30e447010be6f3d68e475ae9?apiKey=7fd2b033b9574f39882fe9ef4728cd45&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/b0508d42ba886f1bc782cf679fe2412ee3c0c84b30e447010be6f3d68e475ae9?apiKey=7fd2b033b9574f39882fe9ef4728cd45&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/b0508d42ba886f1bc782cf679fe2412ee3c0c84b30e447010be6f3d68e475ae9?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
+            srcSet="/images/100w-2.png 100w, /images/200w-2.png 200w, /images/400w-2.png 400w, /images/800w-2.png 800w, /images/1200w-2.png 1200w, /images/1600w-2.png 1600w, /images/2000w-2.png 2000w, /images/fix-2.png"
             className="self-stretch w-full shadow-sm aspect-[0.8] rounded-3xl"
             alt="Descriptive alt text"
           />

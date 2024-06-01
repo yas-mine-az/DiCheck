@@ -4,40 +4,52 @@ import ArticleCard from "@/components/ArticleCard/ArticleCard";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = React.useRef(null);
   const [userName, setUserName] = useState('Loading...');
-
-  const user_id = '65ee97ce710ef0b96a2945dd';
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
+  const [userId, setUserId] = useState(null);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user) {
+      router.push('/login');
+    } else {
+      setLoading(false);
+      setUserId(user._id);
+    }
+
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const res = await axios.get(`http://localhost:8080/api/user/one/${user_id}`);
-      console.log(res.data);
-      setUserName(res.data.first_name + ' ' + res.data.last_name);
+      if (userId) {
+        const res = await axios.get(`http://localhost:8080/api/user/one/${userId}`);
+        console.log(res.data);
+        setUserName(res.data.first_name + ' ' + res.data.last_name);
+      }
     };
 
     fetchProfile();
-  }, []);
+  }, [userId]);
 
   return (
     <header className="flex gap-5 justify-between px-8 py-8 w-full bg-white rounded-3xl border border-violet-100 border-solid shadow-sm max-md:flex-wrap max-md:px-5 max-md:max-w-full">
@@ -45,7 +57,7 @@ function Navbar() {
         <div className="flex gap-5 text-base font-semibold leading-4 text-slate-800">
           <img
             loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/68da6a688c681255397e4803faf3e224b5e3efc978031ae58587884663116de1?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
+            src="/images/dicheck_logo.svg"
             className="shrink-0 w-12 aspect-square"
             alt="DiCheck logo"
           />
@@ -62,7 +74,7 @@ function Navbar() {
         <div className="flex gap-5 items-center relative">
           <img
             loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce8d5aa1db4676e37cfcf9a2f7ba3403df6d0059eabeeede2fcad431e0ca6f66?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
+            src="/images/ava_default.png"
             className="shrink-0 self-stretch w-12 aspect-square"
             alt="User Avatar"
           />
@@ -73,13 +85,13 @@ function Navbar() {
           <img
             onClick={toggleDropdown}
             loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b379a1a79b432ffb40cefb9ff99fce2f032432b8bf95d16c5d738eee5631724b?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
+            src="/images/dropdown_icon.svg"
             className="shrink-0 self-stretch my-auto w-6 aspect-square cursor-pointer"
             alt="Dropdown Icon"
           />
           {isOpen && (
             <div style={{fontFamily: 'Montserrat-Semibold', top: '2em', right: '0'}} ref={dropdownRef} className="absolute w-48 py-2 mt-2 bg-white rounded-md shadow-xl">
-              <a href="/" className="block px-4 py-2 text-gray-800 hover:bg-slate-800 hover:text-white">Log Out</a>
+              <a href="/" className="block px-4 py-2 text-gray-800 hover:bg-slate-800 hover:text-white" onClick={() => localStorage.removeItem('user')}>Log Out</a>
             </div>
           )}
         </div>
@@ -126,24 +138,32 @@ function MyComponent() {
   const [totalChecks, setTotalChecks] = useState(0);
   const [totalChecksToday, setTotalChecksToday] = useState(0);
   const [lastCheckTime, setLastCheckTime] = useState(null);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const { id } = router.query;
-  const userId = '65ee97ce710ef0b96a2945dd';
 
-  const [surprise, setSurprise] = useState(false);
+  const [userId, setUserId] = useState('');
+  const [surprise, setSurprise] = useState(false); // Pindahkan ke sini
 
-  const handleClick = () => {
-    setSurprise(true);
-    setTimeout(() => setSurprise(false), 5000);
-  };
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user) {
+      router.push('/login');
+    } else {
+      setLoading(false);
+      setUserId(user._id);
+    }
+  }, [router]);
 
   useEffect(() => {
     async function fetchChecks() {
-      try {
-        const response = await axios.get(`http://localhost:8080/api/record/record/${id}`);
-        setChecks(response.data);
-      } catch (error) {
-        console.error('Error fetching check records:', error);
+      if (id) { // Pastikan id tersedia sebelum melakukan fetch
+        try {
+          const response = await axios.get(`http://localhost:8080/api/record/record/${id}`);
+          setChecks(response.data);
+        } catch (error) {
+          console.error('Error fetching check records:', error);
+        }
       }
     }
 
@@ -152,29 +172,35 @@ function MyComponent() {
 
   useEffect(() => {
     async function fetchTotalChecks() {
-      try {
-        const response = await axios.get(`http://localhost:8080/api/record/total/${userId}`);
-        setTotalChecks(response.data.totalRecords);
-      } catch (error) {
-        console.error('Error fetching total checks today:', error);
+      if (userId) { // Pastikan userId tersedia sebelum melakukan fetch
+        try {
+          const response = await axios.get(`http://localhost:8080/api/record/total/${userId}`);
+          setTotalChecks(response.data.totalRecords);
+        } catch (error) {
+          console.error('Error fetching total checks:', error);
+        }
       }
     }
 
     async function fetchTotalChecksToday() {
-      try {
-        const response = await axios.get(`http://localhost:8080/api/record/total_today/${userId}`);
-        setTotalChecksToday(response.data.totalRecords);
-      } catch (error) {
-        console.error('Error fetching total checks today:', error);
+      if (userId) { // Pastikan userId tersedia sebelum melakukan fetch
+        try {
+          const response = await axios.get(`http://localhost:8080/api/record/total_today/${userId}`);
+          setTotalChecksToday(response.data.totalRecords);
+        } catch (error) {
+          console.error('Error fetching total checks today:', error);
+        }
       }
     }
 
     async function fetchLatestCheckTime() {
-      try {
-        const response = await axios.get(`http://localhost:8080/api/record/latest_record/${userId}`);
-        setLastCheckTime(response.data.latestRecordTime);
-      } catch (error) {
-        console.error('Error fetching latest check time:', error);
+      if (userId) { // Pastikan userId tersedia sebelum melakukan fetch
+        try {
+          const response = await axios.get(`http://localhost:8080/api/record/latest_record/${userId}`);
+          setLastCheckTime(response.data.latestRecordTime);
+        } catch (error) {
+          console.error('Error fetching latest check time:', error);
+        }
       }
     }
 
@@ -182,6 +208,15 @@ function MyComponent() {
     fetchTotalChecksToday();
     fetchLatestCheckTime();
   }, [userId]);
+
+  const handleClick = () => {
+    setSurprise(true);
+    setTimeout(() => setSurprise(false), 5000);
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   const date = new Date(lastCheckTime);
   const formattedDate = date.toLocaleDateString('id-ID');
@@ -235,31 +270,32 @@ function MyComponent() {
                 </header>
                 <p style={{ fontFamily: 'Montserrat-Regular', fontSize: '17px', fontWeight: '400' }} className="mb-5 text-neutral-500">Berikut detail medical record yang kamu buat!</p>
                 <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <p className="mb-2 font-bold text-gray-700 lg:text-lg xl:text-1xl" style={{ fontFamily: 'Montserrat-Bold' }}><u>Symptoms</u></p>
-                    <ul className="ml-5 text-gray-600 lg:text-lg xl:text-0.5xl" style={{ fontFamily: 'Montserrat-Regular', listStyleType: 'square' }}>
-                      {check.symptomps.map((symptom, index) => (
-                        <li key={index}>{symptom}</li>
-                      ))}
-                    </ul>
-                  </div>
+                <div>
+                  <p className="mb-2 font-bold text-gray-700 lg:text-lg xl:text-1xl" style={{ fontFamily: 'Montserrat-Bold' }}><u>Symptoms</u></p>
+                  <ul className="ml-5 text-gray-600 lg:text-lg xl:text-0.5xl" style={{ fontFamily: 'Montserrat-Regular', listStyleType: 'square' }}>
+                    {check.symptoms.map((symptom, index) => (
+                      <li key={index}>{symptom.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</li>
+                    ))}
+                  </ul>
+                </div>
                   <div>
                     <p className="mb-2 font-bold text-gray-700 lg:text-lg xl:text-1xl" style={{ fontFamily: 'Montserrat-Bold' }}><u>Disease</u></p>
                     <p className="text-gray-600 lg:text-lg xl:text-3xl" style={{ fontFamily: 'Montserrat-Bold' }}>{check.disease}</p>
+                    <p className="mt-2 text-gray-600 lg:text-lg xl:text-1xl" style={{ fontFamily: 'Montserrat-Regular' }}>{check.description}</p>
                   </div>
                   <div>
                     <p className="mb-2 font-bold text-gray-700 lg:text-lg xl:text-1xl" style={{ fontFamily: 'Montserrat-Bold' }}><u>Treatment Advice</u></p>
                     <ul className="ml-5 text-gray-600 lg:text-lg xl:text-0.5xl" style={{ fontFamily: 'Montserrat-Regular', listStyleType: 'square' }}>
-                      {check.treatment_advice.map((treatment_advice, index) => (
-                        <li key={index}>{treatment_advice}</li>
+                      {check.recommendations.map((recommendation, index) => (
+                        <li key={index}>{recommendation.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</li>
                       ))}
                     </ul>
                   </div>
                   <div>
                     <p className="mb-2 font-bold text-gray-700 lg:text-lg xl:text-1xl" style={{ fontFamily: 'Montserrat-Bold' }}><u>Medicine Name</u></p>
                     <ul className="ml-5 text-gray-600 lg:text-lg xl:text-0.5xl" style={{ fontFamily: 'Montserrat-Regular', listStyleType: 'square' }}>
-                      {check.medicine_name.map((medicine_name, index) => (
-                        <li key={index}>{medicine_name}</li>
+                      {check.medications.map((medication, index) => (
+                        <li key={index}>{medication.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</li>
                       ))}
                     </ul>
                   </div>
@@ -279,9 +315,24 @@ function MyComponent() {
                     </button>
 
                     {surprise && (
-                      <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(255, 192, 203, 1.0)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 9999 }}>
+                      <motion.div 
+                        style={{ 
+                          position: 'fixed', 
+                          top: 0, 
+                          left: 0, 
+                          width: '100vw', 
+                          height: '100vh', 
+                          background: 'rgba(255, 192, 203, 1.0)', 
+                          display: 'flex', 
+                          justifyContent: 'center', 
+                          alignItems: 'center', 
+                          zIndex: 9999, 
+                        }}
+                        animate={{ scale: [1, 1.15, 1] }}
+                        transition={{ duration: 1.5 }} 
+                      >
                         <h1 style={{ fontFamily: 'Montserrat-Bold', color: 'white', fontSize: '5rem' }}>Semangat dan Cepat Sembuh!<span role="img" aria-label="sparkling-heart">💖</span></h1>
-                      </div>
+                      </motion.div>
                     )}
                   </div>
                 </div>

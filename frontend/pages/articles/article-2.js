@@ -76,9 +76,11 @@ export default function MyComponent() {
             <div style={{ fontFamily: 'Montserrat-Bold', fontSize: '20px' }} className="flex justify-end pl-20 py-9 w-full font-bold whitespace-nowrap bg-white max-w-full max-md:px-5 max-md:max-w-full">
                 <div className="flex gap-5 justify-between w-full max-w-full max-md:flex-wrap max-md:max-w-full">
                     <div className="flex gap-5 max-md:flex-wrap max-md:max-w-full">
+                    <Link href="/">
                         <div className="flex-auto text-3xl tracking-normal leading-8 text-slate-800 mr-10">
                             DiCheck
                         </div>
+                    </Link>
                         <div className="flex flex-auto gap-10 justify-start self-start text-sm tracking-wide leading-6 text-center text-neutral-500">
                             <Link href="/homepage"> <button className="justify-center py-2">Home</button> </Link>
                             <Link href="/check-disease"> <button className="justify-center px-1.5 py-2">Check</button> </Link>
@@ -99,11 +101,11 @@ export default function MyComponent() {
                     date="14 November 2023"
                     title="Pentingnya Vaksinasi dalam Mencegah Penyakit Menular"
                     images={[
-                        "https://cdn.builder.io/api/v1/image/assets/TEMP/1e36107e1eab37528442063a0ef19b242a6c8ca977711f3ba2b6a76aff844642?apiKey=7fd2b033b9574f39882fe9ef4728cd45&",
-                        "https://cdn.builder.io/api/v1/image/assets/TEMP/38406d6545b84e51f700dbaa0e1c92c3783b4d400082f0abbd74d4d76d561262?apiKey=7fd2b033b9574f39882fe9ef4728cd45&",
-                        "https://cdn.builder.io/api/v1/image/assets/TEMP/c0a4dade6f494e4874e36d7badb6a3e3f0a79a231fc1ac04b0474a06699d364d?apiKey=7fd2b033b9574f39882fe9ef4728cd45&",
+                        "/images/vaksin_1.png",
+                        "/images/vaksin_2.png",
+                        "/images/vaksin_3.png",
                     ]}
-                    authorImage="https://cdn.builder.io/api/v1/image/assets/TEMP/0a71abac13304cf5bdd69390001fdbe782de706b075a608cc7d5bdb17b9bbefa?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
+                    authorImage="/images/logo_admin.png"
                     author="Dicheck Admin"
                     content={articleContent}
                 />

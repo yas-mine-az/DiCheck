@@ -76,9 +76,11 @@ export default function MyComponent() {
             <div style={{ fontFamily: 'Montserrat-Bold', fontSize: '20px' }} className="flex justify-end pl-20 py-9 w-full font-bold whitespace-nowrap bg-white max-w-full max-md:px-5 max-md:max-w-full">
                 <div className="flex gap-5 justify-between w-full max-w-full max-md:flex-wrap max-md:max-w-full">
                     <div className="flex gap-5 max-md:flex-wrap max-md:max-w-full">
+                    <Link href="/">
                         <div className="flex-auto text-3xl tracking-normal leading-8 text-slate-800 mr-10">
                             DiCheck
                         </div>
+                    </Link>
                         <div className="flex flex-auto gap-10 justify-start self-start text-sm tracking-wide leading-6 text-center text-neutral-500">
                             <Link href="/homepage"> <button className="justify-center py-2">Home</button> </Link>
                             <Link href="/check-disease"> <button className="justify-center px-1.5 py-2">Check</button> </Link>
@@ -99,11 +101,11 @@ export default function MyComponent() {
                     date="04 June 2023"
                     title="Manfaat Olahraga Rutin untuk Kesehatan Mental"
                     images={[
-                        "https://cdn.builder.io/api/v1/image/assets/TEMP/622e83f2905726afcb91f107860589582ffac0cecd66b8008c54c908e651cc93?apiKey=7fd2b033b9574f39882fe9ef4728cd45&",
-                        "https://cdn.builder.io/api/v1/image/assets/TEMP/f9cc5a8e566b8e56276b649dc4d7f94624c0558002b74d923889eb1a75bbca8c?apiKey=7fd2b033b9574f39882fe9ef4728cd45&",
-                        "https://cdn.builder.io/api/v1/image/assets/TEMP/7fa6ea1dd7be1dd595ce10649a28505db973e23ab25058436e5db754fe38d94e?apiKey=7fd2b033b9574f39882fe9ef4728cd45&",
+                        "/images/olahraga_1.png",
+                        "/images/olahraga_2.png",
+                        "/images/olahraga_3.png",
                     ]}
-                    authorImage="https://cdn.builder.io/api/v1/image/assets/TEMP/0a71abac13304cf5bdd69390001fdbe782de706b075a608cc7d5bdb17b9bbefa?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
+                    authorImage="/images/logo_admin.png"
                     author="Dicheck Admin"
                     content={articleContent}
                 />

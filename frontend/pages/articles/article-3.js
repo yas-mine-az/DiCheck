@@ -76,9 +76,11 @@ export default function MyComponent() {
             <div style={{ fontFamily: 'Montserrat-Bold', fontSize: '20px' }} className="flex justify-end pl-20 py-9 w-full font-bold whitespace-nowrap bg-white max-w-full max-md:px-5 max-md:max-w-full">
                 <div className="flex gap-5 justify-between w-full max-w-full max-md:flex-wrap max-md:max-w-full">
                     <div className="flex gap-5 max-md:flex-wrap max-md:max-w-full">
+                    <Link href="/">
                         <div className="flex-auto text-3xl tracking-normal leading-8 text-slate-800 mr-10">
                             DiCheck
                         </div>
+                    </Link>
                         <div className="flex flex-auto gap-10 justify-start self-start text-sm tracking-wide leading-6 text-center text-neutral-500">
                             <Link href="/homepage"> <button className="justify-center py-2">Home</button> </Link>
                             <Link href="/check-disease"> <button className="justify-center px-1.5 py-2">Check</button> </Link>
@@ -99,11 +101,11 @@ export default function MyComponent() {
                     date="30 Januari 2024"
                     title="Pentingnya Pola Makan Sehat untuk Mencegah Penyakit Kronis"
                     images={[
-                        "https://cdn.builder.io/api/v1/image/assets/TEMP/1bac966d58eae16ceb6c6b3e4a0f1526071163dbc757836c4c1ac3cbb4fa6310?apiKey=7fd2b033b9574f39882fe9ef4728cd45&",
-                        "https://cdn.builder.io/api/v1/image/assets/TEMP/68f3a5388f16a59bc059df1c077a9a7ebf842a5a7abeed39a9ae7932056a0759?apiKey=7fd2b033b9574f39882fe9ef4728cd45&",
-                        "https://cdn.builder.io/api/v1/image/assets/TEMP/3f696da6c182e6f56b6aab657de208928005af3dcf5b0a305d86558a78e4e23d?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
+                        "/images/food_1.png",
+                        "/images/food_2.png",
+                        "/images/food_3.png"
                     ]}
-                    authorImage="https://cdn.builder.io/api/v1/image/assets/TEMP/0a71abac13304cf5bdd69390001fdbe782de706b075a608cc7d5bdb17b9bbefa?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
+                    authorImage="/images/logo_admin.png"
                     author="Dicheck Admin"
                     content={articleContent}
                 />

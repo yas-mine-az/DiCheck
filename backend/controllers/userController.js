@@ -13,28 +13,46 @@ const findAllUser = async (req, res) => {
 
 // Create/Register User
 const createUser = async (req, res) => {
-    const {first_name, last_name, username, email, password, age, gender} = req.body;
-    try {
-        const checkUsername = await User.findOne({ username });
-        if (checkUsername) {
-        return res.status(400).json({ error: "Username tidak tersedia" });
-        }
-        const user = await User.create({
-        first_name,
-        last_name,
-        username,
-        email,
-        password,
-        age,
-        gender,
-        });
-        
-        res
-            .status(200)
-            .json({ message: "User berhasil dibuat", User: user });
-    } catch (err) {
-        res.status(400).json({ error: err.message });
+  const {first_name, last_name, username, email, password, age, gender} = req.body;
+  try {
+      const checkUsername = await User.findOne({ username });
+      if (checkUsername) {
+          console.log(`Register failed: Username ${username} is already taken`);
+          return res.status(400).json({ error: "Username tidak tersedia" });
+      }
+      const user = await User.create({
+      first_name,
+      last_name,
+      username,
+      email,
+      password,
+      age,
+      gender,
+      });
+      
+      res
+          .status(200)
+          .json({ message: "User berhasil dibuat", User: user });
+  } catch (err) {
+      console.log(`Register failed: ${err.message}`);
+      res.status(400).json({ error: err.message });
+  }
+};
+
+const checkUsername = async (req, res) => {
+  const { username } = req.body;
+
+  try {
+    const user = await User.findOne({ username });
+
+    if (user) {
+      return res.status(200).json({ message: "Username sudah ada" });
     }
+
+    return res.status(200).json({ message: "Username tersedia" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };
 
 // Delete User by Id
@@ -128,5 +146,6 @@ module.exports = {
     deleteUserById,
     updateUserById,
     loginUser,
-    getUserById
+    getUserById,
+    checkUsername,
 };

@@ -8,7 +8,7 @@ function ArticleCard({ date, title, description, imgSrc, imgAlt, href, width }) 
           <img loading="lazy" src={imgSrc} alt={imgAlt} className="w-full aspect-[1.49] max-md:max-w-full" />
     </Link>
     <div className="flex gap-5 mt-8 max-md:flex-wrap">
-      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/0a71abac13304cf5bdd69390001fdbe782de706b075a608cc7d5bdb17b9bbefa?apiKey=7fd2b033b9574f39882fe9ef4728cd45&" alt="Dicheck Admin Profile Image" className="shrink-0 aspect-square w-[50px]" />
+      <img loading="lazy" src="/images/logo_admin.png" alt="Dicheck Admin Profile Image" className="shrink-0 aspect-square w-[50px]" />
       <p style={{ 
           fontFamily: 'Montserrat-Bold', 
           fontSize: '20px', 

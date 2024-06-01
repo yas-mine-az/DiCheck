@@ -1,10 +1,13 @@
 const express = require('express');
-const {findAllUser, createUser, deleteUserById, updateUserById, loginUser, getUserById} = require("../controllers/userController");
+const {findAllUser, createUser, deleteUserById, updateUserById, loginUser, getUserById, checkUsername} = require("../controllers/userController");
 
 const router = express.Router();
 
 // API LOGIN
 router.post("/login", loginUser);
+
+// API CHECK USERNAME
+router.post("/check_username", checkUsername);
 
 // API GET ALL USER
 router.get("/", findAllUser);

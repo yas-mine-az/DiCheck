@@ -3,13 +3,15 @@ import { useState, useEffect } from "react";
 import ArticleCard from "@/components/ArticleCard/ArticleCard";
 import Link from "next/link";
 import axios from "axios";
+import { useRouter } from 'next/router';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = React.useRef(null);
   const [userName, setUserName] = useState('Loading...');
+  const user = JSON.parse(localStorage.getItem('user'));
 
-  const user_id = '65ee97ce710ef0b96a2945dd';
+  const user_id = user._id;
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -44,7 +46,7 @@ function Navbar() {
         <div className="flex gap-5 text-base font-semibold leading-4 text-slate-800">
           <img
             loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/68da6a688c681255397e4803faf3e224b5e3efc978031ae58587884663116de1?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
+            src="/images/dicheck_logo.svg"
             className="shrink-0 w-12 aspect-square"
             alt="DiCheck logo"
           />
@@ -61,7 +63,7 @@ function Navbar() {
         <div className="flex gap-5 items-center relative">
           <img
             loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce8d5aa1db4676e37cfcf9a2f7ba3403df6d0059eabeeede2fcad431e0ca6f66?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
+            src="/images/ava_default.png"
             className="shrink-0 self-stretch w-12 aspect-square"
             alt="User Avatar"
           />
@@ -72,13 +74,13 @@ function Navbar() {
           <img
             onClick={toggleDropdown}
             loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b379a1a79b432ffb40cefb9ff99fce2f032432b8bf95d16c5d738eee5631724b?apiKey=7fd2b033b9574f39882fe9ef4728cd45&"
+            src="/images/dropdown_icon.svg"
             className="shrink-0 self-stretch my-auto w-6 aspect-square cursor-pointer"
             alt="Dropdown Icon"
           />
           {isOpen && (
             <div style={{fontFamily: 'Montserrat-Semibold', top: '2em', right: '0'}} ref={dropdownRef} className="absolute w-48 py-2 mt-2 bg-white rounded-md shadow-xl">
-              <a href="/" className="block px-4 py-2 text-gray-800 hover:bg-slate-800 hover:text-white">Log Out</a>
+              <a href="/" className="block px-4 py-2 text-gray-800 hover:bg-slate-800 hover:text-white" onClick={() => localStorage.removeItem('user')}>Log Out</a>
             </div>
           )}
         </div>
@@ -93,7 +95,7 @@ function Articles() {
       date: "04 June 2023",
       title: "Manfaat Olahraga Rutin untuk Kesehatan Mental",
       description: "Olahraga tidak hanya penting untuk kesehatan fisik, tetapi juga memiliki banyak manfaat untuk kesehatan mental.",
-      imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/f9cc5a8e566b8e56276b649dc4d7f94624c0558002b74d923889eb1a75bbca8c?apiKey=7fd2b033b9574f39882fe9ef4728cd45&",
+      imgSrc: "/images/olahraga_2.png",
       imgAlt: "Manfaat Olahraga Rutin untuk Kesehatan Mental",
       href: "/articles/article-1"
     },
@@ -101,7 +103,7 @@ function Articles() {
       date: "03 June 2023",
       title: "Pentingnya Vaksinasi dalam Mencegah Penyakit Menular",
       description: "Vaksinasi adalah salah satu intervensi kesehatan masyarakat yang paling efektif dalam mencegah penyebaran penyakit menular.",
-      imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/4b4d2fe1e80d88dc03b72422c7d0bfd916ddc898ce2338bdc27f9e027a34adaf?apiKey=7fd2b033b9574f39882fe9ef4728cd45&",
+      imgSrc: "/images/vaksin_2.png",
       imgAlt: "Pentingnya Vaksinasi dalam Mencegah Penyakit Menular",
       href: "/articles/article-2"
     }
@@ -154,58 +156,77 @@ function MyComponent() {
   const [totalChecks, setTotalChecks] = useState(0);
   const [totalChecksToday, setTotalChecksToday] = useState(0);
   const [lastCheckTime, setLastCheckTime] = useState(null);
-  const userId = '65ee97ce710ef0b96a2945dd';
+  const [loading, setLoading] = useState(true);
+  const [userId, setUserId] = useState('');
+
+  const router = useRouter();
 
   useEffect(() => {
-    async function fetchChecks() {
-      try {
-        const response = await axios.get(`http://localhost:8080/api/record/${userId}?page=${page}&limit=${limit}`);
-        setChecks(response.data.records);
-        setTotalPages(response.data.totalPages);
-        console.log(response.data);
-      } catch (error) {
-        console.error('Error fetching check records:', error);
-      }
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user) {
+      router.push('/login');
+    } else {
+      setLoading(false);
+      setUserId(user._id);
     }
-
-    fetchChecks();
-  }, [userId, page, limit]);
+  }, [router]);
 
   useEffect(() => {
-    async function fetchTotalChecks() {
-      try {
-        const response = await axios.get(`http://localhost:8080/api/record/total/${userId}`);
-        setTotalChecks(response.data.totalRecords);
-      } catch (error) {
-        console.error('Error fetching total checks today:', error);
-      }
+    if (!loading) {
+      const fetchChecks = async () => {
+        try {
+          const response = await axios.get(`http://localhost:8080/api/record/${userId}?page=${page}&limit=${limit}`);
+          setChecks(response.data.records);
+          setTotalPages(response.data.totalPages);
+          console.log(response.data);
+        } catch (error) {
+          console.error('Error fetching check records:', error);
+        }
+      };
+
+      const fetchTotalChecks = async () => {
+        try {
+          const response = await axios.get(`http://localhost:8080/api/record/total/${userId}`);
+          setTotalChecks(response.data.totalRecords);
+        } catch (error) {
+          console.error('Error fetching total checks:', error);
+        }
+      };
+
+      const fetchTotalChecksToday = async () => {
+        try {
+          const response = await axios.get(`http://localhost:8080/api/record/total_today/${userId}`);
+          setTotalChecksToday(response.data.totalRecords);
+        } catch (error) {
+          console.error('Error fetching total checks today:', error);
+        }
+      };
+
+      const fetchLatestCheckTime = async () => {
+        try {
+          const response = await axios.get(`http://localhost:8080/api/record/latest_record/${userId}`);
+          setLastCheckTime(response.data.latestRecordTime);
+        } catch (error) {
+          console.error('Error fetching latest check time:', error);
+        }
+      };
+
+      fetchChecks();
+      fetchTotalChecks();
+      fetchTotalChecksToday();
+      fetchLatestCheckTime();
     }
+  }, [loading, page, limit, userId]);
 
-    async function fetchTotalChecksToday() {
-      try {
-        const response = await axios.get(`http://localhost:8080/api/record/total_today/${userId}`);
-        setTotalChecksToday(response.data.totalRecords);
-      } catch (error) {
-        console.error('Error fetching total checks today:', error);
-      }
-    }
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-    async function fetchLatestCheckTime() {
-      try {
-        const response = await axios.get(`http://localhost:8080/api/record/latest_record/${userId}`);
-        setLastCheckTime(response.data.latestRecordTime);
-      } catch (error) {
-        console.error('Error fetching latest check time:', error);
-      }
-    }
-
-    fetchTotalChecks();
-    fetchTotalChecksToday();
-    fetchLatestCheckTime();
-  }, [userId]);
-
-  const date = new Date(lastCheckTime);
-  const formattedDate = date.toLocaleDateString('id-ID');
+  let formattedDate = '-';
+  if (lastCheckTime) {
+    const date = new Date(lastCheckTime);
+    formattedDate = date.toLocaleDateString('id-ID');
+  }
 
   return (
     <div className="flex flex-col p-10 bg-slate-50 max-md:px-5">
@@ -295,7 +316,9 @@ function MyComponent() {
                       <p style={{ fontFamily: 'Montserrat-Bold', fontSize: '17px' }} className="mb-2 grow leading-6 text-slate-800 w-fit">Disease:</p> 
                       <p style={{ fontFamily: 'Montserrat-Regular', fontSize: '17px' }} className="mb-2 grow leading-6 text-neutral-500 w-fit">{check.disease}</p>
                       <p style={{ fontFamily: 'Montserrat-Bold', fontSize: '17px' }} className="mb-2 grow leading-6 text-slate-800 w-fit">Symptoms:</p> 
-                      <p style={{ fontFamily: 'Montserrat-Regular', fontSize: '17px' }} className="mb-2 grow leading-6 text-neutral-500 w-fit"> {check.symptomps.join(', ')}</p>
+                      <p style={{ fontFamily: 'Montserrat-Regular', fontSize: '17px' }} className="mb-2 grow leading-6 text-neutral-500 w-fit">
+                        {check.symptoms.map(symptom => symptom.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())).join(', ')}
+                      </p>
                       <p style={{ fontFamily: 'Montserrat-Bold', fontSize: '17px' }} className="mb-2 grow leading-6 text-slate-800 w-fit">Record Date:</p> 
                       <p style={{ fontFamily: 'Montserrat-Regular', fontSize: '17px' }} className="mb-2 grow leading-6 text-neutral-500 w-fit"> {new Date(check.record_date).toLocaleString('id-ID')}</p>
                       <button onClick={() => window.location.href=`/${check._id}`} className="px-10 py-4 text-sm font-bold tracking-wide leading-5 text-center hover:bg-gray-900 text-white whitespace-nowrap bg-gray-600 rounded-md max-md:px-5 max-md:mt-10 max-md:max-w-full" style={{ fontFamily: 'Montserrat-Bold', alignSelf: 'center', marginTop: '20px' }}>

@@ -3,15 +3,14 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-
 const app = express();
-const userRoutes = require('./routes/userRoutes');
-const medicalRecordRoutes = require('./routes/medicalRecordRoutes');
-const articleRoutes = require('./routes/articleRoutes');
+const userRoutes = require('../routes/userRoutes');
+const medicalRecordRoutes = require('../routes/medicalRecordRoutes');
+const articleRoutes = require('../routes/articleRoutes');
 const port = 8080;
 
 app.use(cors());
-app.use(express.json()); // This should be placed before your routes
+app.use(express.json());
 
 app.use("/api/user", userRoutes);
 app.use("/api/record", medicalRecordRoutes);
@@ -36,3 +35,5 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+module.exports = app; // Tambahkan ini
